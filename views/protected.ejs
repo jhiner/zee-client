@@ -1,0 +1,56 @@
+<% include header %>
+<body>
+  <h1><%= title %></h1>
+  <p> Welcome, <%= user.email %> </p>
+  <!-- id token -->
+  <h3>id_token</h3>
+  <pre>
+    <code>
+      <%= tokenParams.id_token %>
+    </code>
+  </pre>
+  <!-- decoded id token payload --> 
+  <h3>id_token payload</h3>
+  <pre>
+    <code>
+      <%= decodedIdTokenPayload %>
+    </code>
+  </pre>
+
+  <!-- access token -->
+  <h3>access_token</h3>
+  <pre>
+    <code>
+      <%= tokenParams.access_token %>
+    </code>
+  </pre>
+
+  <!-- token details e.g. expires in, scope, etc -->
+  <h3>token response</h3>
+  <pre>
+    <code>
+      <%= JSON.stringify(tokenResponse) %>
+    </code>
+  </pre>
+  <!-- user info response -->
+  <h3>userinfo response</h3>
+  <pre>
+    <code>
+      <%= JSON.stringify(userInfoResponse) %>
+    </code>
+  </pre>
+  <!-- refresh token -->
+  <!-- TODO: support refresh token exchange -->
+  <h3>refresh_token</h3>
+  <pre>
+    <code>
+      <%= refreshToken %>
+    </code>
+  </pre>
+  <form method="POST" action="/logout">
+    <button type="submit">Logout</button>
+    <p>
+      <label for="federated">Logout at OP </label><input type="checkbox" id="federated" name="federated">
+    </p>
+  </form>
+</body>
